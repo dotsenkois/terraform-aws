@@ -18,9 +18,9 @@ output "aws_ami_id" {
   description = "aws_ami_id"
 }
 
-output "public_ip" {
-value = aws_instance.web.public_ip 
-description = "public_ip"
+output "private_ip" {
+value = aws_instance.web.private_ip
+description = "private_ip"
 }
 
 output "subnet_id" {
