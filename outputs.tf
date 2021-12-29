@@ -1,29 +1,29 @@
-data "aws_caller_identity" "current" {}
-data "aws_region" "current" {}
+# data "aws_caller_identity" "current" {}
+# data "aws_region" "current" {}
 
-output "account_id" {
-  value = data.aws_caller_identity.current.account_id
-}
+# output "account_id" {
+#   value = data.aws_caller_identity.current.account_id
+# }
 
-output "caller_user" {
-  value = data.aws_caller_identity.current.user_id
-}
+# output "caller_user" {
+#   value = data.aws_caller_identity.current.user_id
+# }
 
-output "aws_region" {
-  value = data.aws_region.current.name
-}
+# output "aws_region" {
+#   value = data.aws_region.current.name
+# }
 
-output "aws_ami_id" {
-  value       = data.aws_ami.ubuntu.id
-  description = "aws_ami_id"
-}
+# output "aws_ami_id" {
+#   value       = data.aws_ami.ubuntu.id
+#   description = "aws_ami_id"
+# }
 
-output "private_ip" {
-value = aws_instance.web.private_ip
-description = "private_ip"
-}
+# output "private_ip" {
+# value = aws_instance.web[count.index].private_ip
+# description = "private_ip"
+# }
 
-output "subnet_id" {
-value = aws_instance.web.subnet_id
-description = "subnet_id"
-}
+# output "subnet_id" {
+# value = aws_instance.web.subnet_id
+# description = "subnet_id"
+# }
