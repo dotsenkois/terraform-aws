@@ -37,8 +37,8 @@ resource "aws_instance" "count" {
 
 
   ami                  = data.aws_ami.ubuntu.id
-  instance_type        = local.web_instance_type_map[terraform.workspace]
-  count                = local.web_instance_count_map[terraform.workspace]
+  instance_type        = local.web_instance_type_map[prod]
+  count                = local.web_instance_count_map[prod]
   cpu_core_count       = "1"
   cpu_threads_per_core = "1"
   tags = {
