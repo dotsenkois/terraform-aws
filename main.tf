@@ -30,33 +30,33 @@ locals {
   }
 }
 
-resource "aws_instance" "count" {
-  # for_each = local.instances
-  # ami = each.value
-  # instance_type = each.key
+# resource "aws_instance" "count" {
+#   # for_each = local.instances
+#   # ami = each.value
+#   # instance_type = each.key
 
 
-  ami                  = data.aws_ami.ubuntu.id
-  instance_type        = local.web_instance_type_map[prod]
-  count                = local.web_instance_count_map[prod]
-  cpu_core_count       = "1"
-  cpu_threads_per_core = "1"
-  tags = {
-    Name  = "HelloWorld"
-    Autor = "dotsenkois"
-  }
-  lifecycle {
-    create_before_destroy = true
-  }
+#   ami                  = data.aws_ami.ubuntu.id
+#   instance_type        = local.web_instance_type_map[prod]
+#   count                = local.web_instance_count_map[prod]
+#   cpu_core_count       = "1"
+#   cpu_threads_per_core = "1"
+#   tags = {
+#     Name  = "HelloWorld"
+#     Autor = "dotsenkois"
+#   }
+#   lifecycle {
+#     create_before_destroy = true
+#   }
 
-  ebs_block_device {
-    delete_on_termination = "true"
-    device_name           = "/dev/xvda"
-    encrypted             = "false"
-    volume_size           = "2"
-    volume_type           = "gp2"
-  }
-}
+#   ebs_block_device {
+#     delete_on_termination = "true"
+#     device_name           = "/dev/xvda"
+#     encrypted             = "false"
+#     volume_size           = "2"
+#     volume_type           = "gp2"
+#   }
+# }
 
 resource "aws_instance" "foreach" {
   for_each      = local.instances
