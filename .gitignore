@@ -2,3 +2,4 @@
 .terraform
 terraform.tfstate
 terraform.tfstate.backup
+atlantis_linux_amd64.zip

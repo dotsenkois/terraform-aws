@@ -30,7 +30,26 @@ locals {
   }
 }
 
-# resource "aws_instance" "count" {
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+
+  name = "single-instance"
+
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = "t3.micro"
+  key_name               = "terraform-neto-AWS"
+  monitoring             = true
+  vpc_security_group_ids = ["sg-0de744a9c58324938"]
+  #subnet_id              = "subnet-eddcdzz4"
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+
+# resource "aws_instance" "count" {,
 #   # for_each = local.instances
 #   # ami = each.value
 #   # instance_type = each.key
@@ -58,8 +77,9 @@ locals {
 #   }
 # }
 
-resource "aws_instance" "foreach" {
-  for_each      = local.instances
-  ami           = each.value
-  instance_type = each.key
-}
+# resource "aws_instance" "foreach" {
+#   for_each      = local.instances
+#   ami           = each.value
+#   instance_type = each.key
+# }
+
